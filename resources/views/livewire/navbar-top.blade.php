@@ -8,7 +8,7 @@
 					<div class="flex justify-between">
 							<livewire:navbar-link slot="Home" :active="request()->routeIs('home')" />
 							<livewire:navbar-link slot="About" :active="request()->routeIs('about')"/>
-							<livewire:navbar-link slot="Products" :active="request()->routeIs('products')"/>
+							<livewire:navbar-link slot="Shop" :active="request()->routeIs('shop')"/>
 							<livewire:navbar-link slot="FAQ" :active="request()->routeIs('faq')"/>
 							<livewire:navbar-link slot="Contact" :active="request()->routeIs('contact')"/>
 					</div>

@@ -28,6 +28,6 @@ class Products extends Component
     {
         return view('livewire.products', [
         	$this->products = Product::where('active', true)->get()
-        ]);
+        ])->layout('layouts.base');
     }
 }

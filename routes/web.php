@@ -4,6 +4,10 @@ use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productController;
 use App\Http\Livewire\Home;
+use App\Http\Livewire\About;
+use App\Http\Livewire\Shop;
+use App\Http\Livewire\FAQ;
+use App\Http\Livewire\Contact;
 use App\Http\Livewire\ViewBasket;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Livewire\Delivery;
@@ -27,26 +31,14 @@ use App\Http\Controllers\stripeController;
 */
 
 Route::get('/', Home::class)->name('home');
+Route::get('/about', About::class)->name('about');
+Route::get('/products', Shop::class)->name('shop');
+Route::get('/faq', FAQ::class)->name('faq');
+Route::get('/contact', Contact::class)->name('contact');
 
 Route::get('/view-basket', ViewBasket::class)->name('viewbasket');
 Route::get('/delivery', Delivery::class)->name('delivery');
 Route::get('/checkout', Checkout::class)->name('checkout');
-
-Route::get('/about', function () {
-    return view('welcome');
-})->name('about');
-
-Route::get('/products', function () {
-    return view('welcome');
-})->name('products');
-
-Route::get('/faq', function () {
-    return view('welcome');
-})->name('faq');
-
-Route::get('/contact', function () {
-    return view('welcome');
-})->name('contact');
 
 
 Route::prefix('/admin')->middleware(['auth:sanctum', 'verified'])->group(function(){
