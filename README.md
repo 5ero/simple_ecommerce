@@ -4,6 +4,7 @@ Uses stripe for payments and sendinblue for mail notifications.
 Copy .env-example to .env
 
 php artisan migrate --seed
+
 /login for admin
 
 email: dev@example.com
