@@ -147,6 +147,65 @@
   <div class="md:grid md:grid-cols-3 md:gap-6">
     <div class="md:col-span-1">
       <div class="px-4 sm:px-0">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">Choose a category</h3>
+        <p class="mt-1 text-sm text-gray-600">
+          Add your product to a category.
+        </p>
+      </div>
+      
+    </div>
+  
+    <div class="mt-5 md:mt-0 md:col-span-2 pb-4">
+        <div class="shadow overflow-hidden sm:rounded-md">
+          <div class="px-4 py-5 bg-white sm:p-6">
+            <div>
+              <div>
+                <label for="first_name" class="block text-sm font-medium text-gray-700">Select a category</label>
+                <div class="flex items-center">
+                  <select wire:model="category" name="category" id="category">
+                      
+                      @foreach($categories as $cat)
+                       
+                          <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                        
+                      @endforeach
+                      
+                  </select>
+                </div>
+	           	</div>
+	           	@error('product_qty')
+                	<p class="text-red-500">
+                		{{ $message }}
+                	</p>
+                @enderror
+              </div>
+
+              <div class="mt-5">
+                <label for="AddCategory" class="block text-sm font-medium text-gray-700">Or create a new category</label>
+                <div class="flex rounded-md">
+              
+                  <input wire:model="addCategory" type="text" name="addCategory" id="AddCategory" autocomplete="Create a category" class=" focus:ring-indigo-500 focus:border-indigo-500 flex-0 block rounded sm:text-sm border-gray-300">
+                  <button wire:click.prevent="saveCategory" class="ml-2 inline-flex justify-center py-2 px-4  shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save category</button>
+                </div>
+               
+              </div>
+
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+<div class="hidden sm:block" aria-hidden="true">
+  <div class="py-0">
+    <div class="border-t border-gray-200"></div>
+  </div>
+</div>
+
+<div class="mt-10 sm:mt-0 p-4 bg-white">
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+      <div class="px-4 sm:px-0">
         <h3 class="text-lg font-medium leading-6 text-gray-900">Product attributes</h3>
         <p class="mt-1 text-sm text-gray-600">
           Add price, quantity available and postage attributes here.

@@ -7,6 +7,7 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 
 class ProductEdit extends Component
 {
@@ -20,14 +21,37 @@ class ProductEdit extends Component
 	public $product_price;
 	public $tempUrl;
 	public $active;
+	public $categories;
+	public $category;
+	public $addCategory;
+
 
 	protected $rules = [
 		'product_name' => 'required',
 		'product_description' => 'required',
 		'product_qty' => 'required',
 		'product_price' => 'required|numeric',
-		'photo' => 'nullable|image|max:5000'
+		'photo' => 'nullable|image|max:5000',
+		'category' => 'required|integer'
 	];
+
+	protected $listeners = ['categoryUpdated' => 'updateCategories'];
+
+	public function updateCategories()
+	{
+		$this->categories = Category::orderBy('id','desc')->get();
+	}
+
+	public function saveCategory()
+	{
+		$cat = new Category;
+		$cat->create([
+			'name' => $this->addCategory,
+			'description' => ''
+		]);
+		$this->emit('categoryUpdated');
+		$this->addCategory = '';
+	}
 
 	public function increment()
 	{
@@ -74,6 +98,8 @@ class ProductEdit extends Component
 		$this->product_description = $product->product_description;
 		$this->product_qty = $product->product_qty;
 		$this->product_price = $product->product_price;
+		$this->categories = Category::all();
+		$this->category = $product->category->id;
 		
 	}
 
@@ -104,7 +130,8 @@ class ProductEdit extends Component
 			'product_description' => $this->product_description,
 			'product_qty' => $this->product_qty,
 			'product_price' => $this->product_price,
-			'photo' => $this->photo ? $this->photo->storeAs('images', str::slug($this->product_name).'.'.$this->photo->extension()) : $this->product->photo
+			'photo' => $this->photo ? $this->photo->storeAs('images', str::slug($this->product_name).'.'.$this->photo->extension()) : $this->product->photo,
+			'category_id' => $this->category
 		]);
 
 		//toast notification via alpine
