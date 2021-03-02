@@ -22,7 +22,8 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
         "mattlibera/livewire-flash": "^0.5.0",
-        "stripe/stripe-php": "^7.74"
+        "stripe/stripe-php": "^7.74",
+        "webup/laravel-sendinblue": "^3.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

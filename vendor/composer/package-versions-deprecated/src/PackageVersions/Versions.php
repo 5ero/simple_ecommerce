@@ -85,6 +85,7 @@ final class Versions
   'ralouphie/getallheaders' => '3.0.3@120b605dfeb996808c31b6477290a714d356e822',
   'ramsey/collection' => '1.1.3@28a5c4ab2f5111db6a60b2b4ec84057e0f43b9c1',
   'ramsey/uuid' => '4.1.1@cd4032040a750077205918c86049aa0f43d22947',
+  'sendinblue/api-v3-sdk' => 'v7.4.0@0b86513957d22c3fcd0598f5c961be2513f6c8d6',
   'stripe/stripe-php' => 'v7.74.0@e45b12ff0b47746b646f51c8249210303fb076f5',
   'swiftmailer/swiftmailer' => 'v6.2.5@698a6a9f54d7eb321274de3ad19863802c879fb7',
   'symfony/console' => 'v5.2.2@d62ec79478b55036f65e2602e282822b8eaaff0a',
@@ -118,6 +119,7 @@ final class Versions
   'vlucas/phpdotenv' => 'v5.3.0@b3eac5c7ac896e52deab4a99068e3f4ab12d9e56',
   'voku/portable-ascii' => '1.5.6@80953678b19901e5165c56752d087fc11526017c',
   'webmozart/assert' => '1.9.1@bafc69caeb4d49c39fd0779086c03a3738cbb389',
+  'webup/laravel-sendinblue' => 'v3.1.0@dd1deeb9e114945d592a26fb79de08b38bbb8a3d',
   'doctrine/instantiator' => '1.4.0@d56bf6102915de5702778fe20f2de3b2fe570b5b',
   'facade/flare-client-php' => '1.3.7@fd688d3c06658f2b3b5f7bb19f051ee4ddf02492',
   'facade/ignition' => '2.5.9@66b3138ecce38024723fb3bfc66ef8852a779ea9',
@@ -158,7 +160,7 @@ final class Versions
   'sebastian/type' => '2.3.1@81cd61ab7bbf2de744aba0ea61fae32f721df3d2',
   'sebastian/version' => '3.0.2@c6c1022351a901512170118436c764e473f6de8c',
   'theseer/tokenizer' => '1.2.0@75a63c33a8577608444246075ea0af0d052e452a',
-  'laravel/laravel' => 'dev-main@ee540167abfe757ef00774c439e812de191bd2b4',
+  'laravel/laravel' => 'dev-main@421bf51b2850cc023a3fbd88c13331855e5f1525',
 );
 
     private function __construct()

@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '7b8eca2bdc225676c5d8e59b30143f71658c60d4',
+    'reference' => '421bf51b2850cc023a3fbd88c13331855e5f1525',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -575,7 +575,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '7b8eca2bdc225676c5d8e59b30143f71658c60d4',
+      'reference' => '421bf51b2850cc023a3fbd88c13331855e5f1525',
     ),
     'laravel/sail' => 
     array (
@@ -1151,6 +1151,15 @@ private static $installed = array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
     ),
+    'sendinblue/api-v3-sdk' => 
+    array (
+      'pretty_version' => 'v7.4.0',
+      'version' => '7.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0b86513957d22c3fcd0598f5c961be2513f6c8d6',
+    ),
     'stripe/stripe-php' => 
     array (
       'pretty_version' => 'v7.74.0',
@@ -1470,6 +1479,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'bafc69caeb4d49c39fd0779086c03a3738cbb389',
+    ),
+    'webup/laravel-sendinblue' => 
+    array (
+      'pretty_version' => 'v3.1.0',
+      'version' => '3.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dd1deeb9e114945d592a26fb79de08b38bbb8a3d',
     ),
   ),
 );

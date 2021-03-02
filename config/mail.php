@@ -53,6 +53,10 @@ return [
             'transport' => 'mailgun',
         ],
 
+        'sendinblue' => [
+            'transport' => 'sendinblue',
+        ],
+
         'postmark' => [
             'transport' => 'postmark',
         ],
