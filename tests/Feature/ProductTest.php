@@ -9,6 +9,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Category;
 use Livewire\Livewire;
 use PDO;
 use Tests\TestCase;
@@ -24,7 +25,7 @@ class ProductTest extends TestCase
         $this->withoutExceptionHandling();
         $user = User::factory()->create();
 
-        $this->actingAs($user)->get('/products/create')->assertStatus(200);
+        $this->actingAs($user)->get('/admin/products/create')->assertStatus(200);
     }
 
     /** @test */
@@ -34,20 +35,25 @@ class ProductTest extends TestCase
 
         $user = User::factory()->create();
 
+        $category = Category::create([
+            'name' => 'Computers',
+        ]);
+
         $product = [
             'product_name' => $this->faker->sentence,
             'product_description' => $this->faker->paragraph,
             'product_price' => $this->faker->numberBetween($min = 1000, $max = 2000),
             'product_qty' => $this->faker->numberBetween($min = 0, $max = 800),
+            'category_id' => 1
         ];
 
         $this->actingAs($user)->postJson(config('app.url').'/api/products', $product);
         $this->actingAs($user)->assertDatabaseHas('products', $product);
 
-        $this->actingAs($user)->get('/products')->assertSee(Str::title($product['product_name']));
-        $this->actingAs($user)->get('/products')->assertSee(Str::limit($product['product_description'], 100));
-        $this->actingAs($user)->get('/products')->assertSee($product['product_qty']);
-        $this->actingAs($user)->get('/products')->assertSee($product['product_price']);
+        $this->actingAs($user)->get('/admin/products')->assertSee(Str::title($product['product_name']));
+        $this->actingAs($user)->get('/admin/products')->assertSee(Str::limit($product['product_description'], 100));
+        $this->actingAs($user)->get('/admin/products')->assertSee($product['product_qty']);
+        $this->actingAs($user)->get('/admin/products')->assertSee($product['product_price']);
        
     }
 
@@ -68,7 +74,7 @@ class ProductTest extends TestCase
         $this->withoutExceptionHandling();
         $user = User::factory()->create();
 
-        $this->actingAs($user)->get('/products')
+        $this->actingAs($user)->get('/admin/products')
                 ->assertSee('product-list');
     }
 

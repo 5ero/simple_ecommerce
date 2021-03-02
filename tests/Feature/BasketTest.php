@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\Product;
+use App\Models\Category;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -26,13 +27,18 @@ class BasketTest extends TestCase
     /** @test */
     public function can_add_item_to_basket()
     {
+        $category = Category::create([
+            'name' => 'Computers'
+        ]);
+
         $product = Product::create([
             'product_name' => 'Red Balloon Box',
             'product_description' => 'This is a Red Balloon Box',
             'product_price' => 4,
             'product_qty' => 800,
             'photo' => 'images/red-balloon-box.png',
-            'active' => 1
+            'active' => 1,
+            'category_id' => 1
         ]);
 
         $this->get('/')
