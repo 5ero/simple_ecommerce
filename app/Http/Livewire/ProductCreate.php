@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Http;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use App\Models\Category;
 
 
 class ProductCreate extends Component
@@ -19,6 +20,9 @@ class ProductCreate extends Component
 	public $successMsg;
 	public $photo;
 	public $tempUrl;
+	public $categories;
+	public $category=[];
+	public $addCategory;
 
 	public function increment()
 	{
@@ -35,9 +39,21 @@ class ProductCreate extends Component
 		'product_description' => 'required|min:10',
 		'product_qty' => 'required|integer',
 		'product_price' => 'required|numeric',
-		'photo' => 'nullable|image'
+		'photo' => 'nullable|image',
+		'category' => 'required|integer'
 	];
 
+	protected $listeners = ['categoryUpdated' => 'updateCategories'];
+
+	public function updateCategories()
+	{
+		$this->categories = Category::orderBy('id','desc')->get();
+	}
+
+	public function mount()
+	{
+		$this->categories = Category::OrderBy('name')->get();
+	}
 
 	public function  updated($propertyName)
 	{	
@@ -54,32 +70,44 @@ class ProductCreate extends Component
 	}
 
 
+	public function saveCategory()
+	{
+		$cat = new Category;
+		$cat->create([
+			'name' => $this->addCategory,
+			'description' => ''
+		]);
+		$this->emit('categoryUpdated');
+		$this->addCategory = '';
+	}
+
 
 	public function submitForm()
 	{
-			$this->validate();
+		$this->validate();
 
-			$isImage = $this->photo ? $this->photo->storeAs('images', Str::slug($this->product_name).'.'.$this->photo->extension()) : null;
+		$isImage = $this->photo ? $this->photo->storeAs('images', Str::slug($this->product_name).'.'.$this->photo->extension()) : null;
 
-			$formData = [
-				'product_name' => $this->product_name,
-				'product_description' => $this->product_description,
-				'product_qty' => $this->product_qty,
-				'product_price' => $this->product_price,
-				'photo' => $isImage
-			];
+		$formData = [
+			'product_name' => $this->product_name,
+			'product_description' => $this->product_description,
+			'product_qty' => $this->product_qty,
+			'product_price' => $this->product_price,
+			'photo' => $isImage,
+			'category_id' => $this->category
+		];
 
 
-			// Needs refactoring to use model directly instead of api.
-			try {
-				$response = Http::post(config('app.url') . '/api/products', $formData);
+		// Needs refactoring to use model directly instead of api.
+		try {
+			$response = Http::post(config('app.url') . '/api/products', $formData);
 
-			} catch (Exception $e){
-				$this->successMsg = 'Error: '. $e;
-			}
-			
-			$this->dispatchBrowserEvent('success', 'Product created!');			
-			$this->clearForm();
+		} catch (Exception $e){
+			$this->successMsg = 'Error: '. $e;
+		}
+		
+		$this->dispatchBrowserEvent('success', 'Product created!');			
+		$this->clearForm();
 	}
 
 	public function clearForm()
@@ -89,6 +117,7 @@ class ProductCreate extends Component
 		$this->product_qty = 0;
 		$this->product_price = '';
 		$this->photo = '';
+		
 	}
 
 

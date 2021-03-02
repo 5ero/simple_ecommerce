@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCustomerIdToBasketsTable extends Migration
+class CreateCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddCustomerIdToBasketsTable extends Migration
      */
     public function up()
     {
-        Schema::table('baskets', function (Blueprint $table) {
-            $table->bigInteger('customer_id')->nullable();
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddCustomerIdToBasketsTable extends Migration
      */
     public function down()
     {
-        Schema::table('baskets', function (Blueprint $table) {
-            $table->dropColumn('customer_id');
-        });
+        Schema::dropIfExists('categories');
     }
 }

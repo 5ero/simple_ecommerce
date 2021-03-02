@@ -8,7 +8,8 @@ use HiHaHo\EncryptableTrait\Encryptable;
 
 class Customer extends Model
 {
-    use HasFactory, Encryptable;
+     use HasFactory, Encryptable;
+    
 
     protected $encryptable = [
     	'name',
@@ -19,7 +20,6 @@ class Customer extends Model
     	'county',
     	'postcode',
     	'telephone',
-    	'email'
     ];
 
     protected $fillable = [
@@ -38,4 +38,6 @@ class Customer extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+   
 }

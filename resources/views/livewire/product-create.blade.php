@@ -27,9 +27,6 @@
                   Product name
                 </label>
                 <div class="mt-1 flex rounded-md shadow-sm">
-                  <!-- <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                    http://
-                  </span> -->
                   <input wire:model="product_name" type="text" name="product_name" id="product_name" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-md sm:text-sm border-gray-300 @error('product_name') border-red-500 @enderror" placeholder="Product name">
                 </div>
                 @error('product_name')
@@ -103,12 +100,70 @@
   <div class="md:grid md:grid-cols-3 md:gap-6">
     <div class="md:col-span-1">
       <div class="px-4 sm:px-0">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">Choose a category</h3>
+        <p class="mt-1 text-sm text-gray-600">
+          Add your product to a category.
+        </p>
+      </div>
+      
+    </div>
+  
+    <div class="mt-5 md:mt-0 md:col-span-2 pb-4">
+        <div class="shadow overflow-hidden sm:rounded-md">
+          <div class="px-4 py-5 bg-white sm:p-6">
+            <div>
+              <div>
+                <label for="first_name" class="block text-sm font-medium text-gray-700">Select a category</label>
+                <div class="flex items-center">
+                  <select wire:model="category" name="category" id="category">
+                      @forelse($categories as $cat)
+                          <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                      @empty
+                          <option>No categories</option>
+                      @endforelse
+                  </select>
+                </div>
+	           	</div>
+	           	@error('product_qty')
+                	<p class="text-red-500">
+                		{{ $message }}
+                	</p>
+                @enderror
+              </div>
+
+              <div class="mt-5">
+                <label for="AddCategory" class="block text-sm font-medium text-gray-700">Or create a new category</label>
+                <div class="flex rounded-md">
+              
+                  <input wire:model="addCategory" type="text" name="addCategory" id="AddCategory" autocomplete="Create a category" class=" focus:ring-indigo-500 focus:border-indigo-500 flex-0 block rounded sm:text-sm border-gray-300">
+                  <button wire:click.prevent="saveCategory" class="ml-2 inline-flex justify-center py-2 px-4  shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save category</button>
+                </div>
+               
+              </div>
+
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+<div class="hidden sm:block" aria-hidden="true">
+  <div class="py-0">
+    <div class="border-t border-gray-200"></div>
+  </div>
+</div>
+
+<div class="mt-10 sm:mt-0 p-4 bg-white">
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+      <div class="px-4 sm:px-0">
         <h3 class="text-lg font-medium leading-6 text-gray-900">Product attributes</h3>
         <p class="mt-1 text-sm text-gray-600">
           Add price, quantity available and postage attributes here.
         </p>
       </div>
     </div>
+  
     <div class="mt-5 md:mt-0 md:col-span-2">
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
@@ -142,39 +197,6 @@
                 @enderror
               </div>
 
-              <!-- <div >
-                <label for="email_address" class="block text-sm font-medium text-gray-700">Email address</label>
-                <input type="text" name="email_address" id="email_address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-              </div>
-
-              <div>
-                <label for="country" class="block text-sm font-medium text-gray-700">Country / Region</label>
-                <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
-              </div>
- -->
-             <!--  <div class="col-span-6">
-                <label for="street_address" class="block text-sm font-medium text-gray-700">Street address</label>
-                <input type="text" name="street_address" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-              </div>
-
-              <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
-                <input type="text" name="city" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-              </div>
-
-              <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                <label for="state" class="block text-sm font-medium text-gray-700">State / Province</label>
-                <input type="text" name="state" id="state" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-              </div>
-
-              <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                <label for="postal_code" class="block text-sm font-medium text-gray-700">ZIP / Postal</label>
-                <input type="text" name="postal_code" id="postal_code" autocomplete="postal-code" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-              </div> -->
             </div>
           </div>
 

@@ -64,7 +64,7 @@ class ProductEdit extends Component
 		Storage::delete($this->product->photo);
 		$this->product->delete();
 		sleep(1);
-		return redirect('/products');
+		return redirect('/admin/products');
 	}
 
 	public function mount(Product $product)

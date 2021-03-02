@@ -12,7 +12,7 @@
 	    <div></div>
 	    <div class="md:col-span-2 border-l border-gray-200 pb-5">
 	    	<div class=" mx-2 rounded bg-white">
-	  			<div class="text-3xl text-blue-500 text-center py-3">
+	  			<div class="text-3xl text-gray-500 text-center py-3">
 	  				<i class="fas fa-shopping-basket fa-1x mr-3"></i>Your basket
 	  			</div>
 	    		<div class="grid grid-cols-6 gap-2 m-3">

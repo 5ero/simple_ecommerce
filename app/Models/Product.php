@@ -15,12 +15,18 @@ class Product extends Model
 		'product_price',
 		'product_qty',
 		'photo',
-		'active'
+		'active',
+		'category_id'
 	];
 
 	public function basket()
 	{
 		return $this->belongsTo(Basket::class);
+	}
+
+	public function category()
+	{
+		return $this->belongsTo(Category::class);
 	}
 
 	public function getProductPriceAttribute($value)
