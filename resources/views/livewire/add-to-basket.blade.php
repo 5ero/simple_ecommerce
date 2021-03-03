@@ -13,9 +13,9 @@
         x-transition:leave-end="opacity-0"
          class="fixed top-0 left-0 z-40 bg-gray-900 w-full h-full bg-opacity-75"
         >
-    <div class="z-10 w-6/12 mx-auto mt-10 md:mt-40 shadow-lg text-sm border border-gray-300 bg-gray-50 font-semibold text-gray-500">
-        <div class="flex items-center justify-around">
-            <div class="w-1/3 shadow-md">
+    <div class="z-10 w-10/12 md:w-6/12 mx-auto mt-10 md:mt-40 shadow-lg text-sm border border-gray-300 bg-gray-50 font-semibold text-gray-500">
+        <div class="md:flex items-center justify-around">
+            <div class="w-full md:w-1/3 shadow-md">
                 <img :src="`/storage/${message.photo}`"  class="object-cover w-full h-full" alt="`${message.title}">
             </div>
             <div class="w-2/3 p-4">

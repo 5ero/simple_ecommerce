@@ -1,5 +1,5 @@
 
- <div class="flex items-baseline py-2">
+ <div class="flex items-baseline py-2 px-2 md:px-0">
 	 <div class="mr-2 text-gray-500">
 		 <i class="fas fa-shopping-bag fa-2x"></i>
 	 </div>

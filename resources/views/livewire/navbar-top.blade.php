@@ -40,7 +40,7 @@
 				<a href="/" class="block px-10 py-4 ">Home</a>
 			</div>
 			<div class="bg-gray-100 border-b border-gray-200 text-gray-800">
-				<a href="/shop" class="px-10 py-4 block">Shop</a>
+				<a href="/products" class="px-10 py-4 block">Shop</a>
 			</div>
 			<div class="bg-gray-100 border-b border-gray-200 text-gray-800">
 				<a href="/about" class="px-10 py-4 block">About</a>
@@ -57,7 +57,7 @@
 			
 	</div>
 		
-	<div  class="md:hidden text-center bg-blue-700 p-4 text-white">
+	<div  class="md:hidden text-center bg-gray-700 p-4 text-white">
 		<livewire:basket-notification />
 	</div>
 </nav>
