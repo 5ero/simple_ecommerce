@@ -36,19 +36,19 @@
 			x-show.transition.duration.1000ms="mobile" 
 			class="flex-none w-full border-t space-y-1"
 			>
-			<div class="bg-gray-100 border-b border-gray-200 text-blue-800">
+			<div class="bg-gray-100 border-b border-gray-200 text-gray-800">
 				<a href="/" class="block px-10 py-4 ">Home</a>
 			</div>
-			<div class="bg-gray-100 border-b border-gray-200 text-blue-800">
-				<a href="/products" class="px-10 py-4 block">Products</a>
+			<div class="bg-gray-100 border-b border-gray-200 text-gray-800">
+				<a href="/shop" class="px-10 py-4 block">Shop</a>
 			</div>
-			<div class="bg-gray-100 border-b border-gray-200 text-blue-800">
+			<div class="bg-gray-100 border-b border-gray-200 text-gray-800">
 				<a href="/about" class="px-10 py-4 block">About</a>
 			</div>
-			<div class="bg-gray-100 border-b border-gray-200 text-blue-800">
+			<div class="bg-gray-100 border-b border-gray-200 text-gray-800">
 				<a href="/contact" class="px-10 py-4 block">Contact</a>
 			</div>
-			<div class="bg-blue-700 text-white border-b border-gray-200">
+			<div class="bg-gray-700 text-white border-b border-gray-200">
 				<a href="/view-basket" class="px-10 py-4 block"><i class="fas fa-shopping-basket"></i>&nbsp;View basket</a>
 			</div>
 		</div>
