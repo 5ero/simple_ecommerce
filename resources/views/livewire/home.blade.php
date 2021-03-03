@@ -2,7 +2,7 @@
 	<livewire:toast-messenger />
     
     <livewire:navbar-top />
-    <div class="hidden md:block w-full h-72 bg-gray-50 border">
+    <div class="hidden md:block w-full h-48 bg-gray-50 border">
 	        
 	</div>
 

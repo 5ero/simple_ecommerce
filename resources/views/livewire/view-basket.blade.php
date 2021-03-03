@@ -1,11 +1,10 @@
-
-
 <div>
     <livewire:toast-messenger />
+
     <livewire:navbar-top />
 
-    <div class="hidden md:block w-full h-72  border">
-	    <img src="/img/banner.png" class="object-cover w-full h-full" alt="">
+   <div class="hidden md:block w-full h-72 bg-gray-50 border">
+	        
 	</div>
 
 	<div class="grid md:grid-cols-3 gap-3 max-w-7xl">
@@ -25,7 +24,7 @@
 			@endif
 
 			@forelse($basket as $item)
-					<div wire:click="removeItemFromBasket({{ $item->id }})" class="col-span-1 text-center block"><i class="fas fa-times text-red-500 pt-2 fa-xs"></i></div>
+					<div wire:click="removeItemFromBasket({{ $item->id }})" class="col-span-1 text-center block"><i class="fas fa-times-circle text-gray-500 pt-2 fa-xl"></i></div>
 					<div class="col-span-3 text-sm">{{ $item->products[0]->product_name }} <br> @ &pound;{{ $item->price }} each</div>
 					<div class="col-span-1 text-sm text-center">{{ $item->quantity }}</div>
 					<div class="col-span-1 text-sm text-center">&pound;{{ number_format($item->price * $item->quantity, 2, '.','') }}</div>		
@@ -46,7 +45,7 @@
 					</div>
 
 					<div class="text-right p-2">
-						<a href="/delivery" type="button" class="px-3 py-2 bg-blue-500  text-white rounded">Delivery <i class="fas fa-arrow-right fa-xs"></i></a>
+						<a href="/delivery" type="button" class="px-3 py-2 bg-gray-500  text-white rounded">Delivery <i class="fas fa-arrow-right fa-xs"></i></a>
 					</div>
 				@endif
 		</div>

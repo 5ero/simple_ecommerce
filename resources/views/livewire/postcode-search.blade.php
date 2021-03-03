@@ -1,11 +1,11 @@
 <div>
     <div class="py-4 mt-10">
-        <h2 class="text-xl text-blue-600">Delivery address</h2>
+        <h2 class="text-xl text-gray-600">Delivery address</h2>
     </div>
-       <x-input.text wire:model.lazy="search" placeholder="Please enter your postcode" name="search" type="search"  id="search"   leading-add-on="&#x1F50D;"  />
+       <x-input.text wire:model.lazy="search" placeholder="Please enter your postcode" name="search" type="search"  id="search"  />
        
        @if($searchData)
-        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+            <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
     
             <label for="addresses" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
                 Choose address
@@ -19,7 +19,7 @@
                     
                 </div>
             </div>
-            @endif
+        @endif
     
            
-        </div>
+</div>

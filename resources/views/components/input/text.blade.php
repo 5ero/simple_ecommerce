@@ -30,7 +30,7 @@
 	
 	@if($attributes['type'] == 'search')
 
-		<button wire:click.prevent="{{ $attributes['id'] }}" type="button" class="bg-blue-700 text-white p-3 rounded ml-2">Search</button>
+		<button wire:click.prevent="{{ $attributes['id'] }}" type="button" class="bg-gray-700 text-white p-3 rounded ml-2">Search</button>
 
 	@endif
 	
