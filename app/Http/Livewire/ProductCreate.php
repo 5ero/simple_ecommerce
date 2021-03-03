@@ -21,8 +21,9 @@ class ProductCreate extends Component
 	public $photo;
 	public $tempUrl;
 	public $categories;
-	public $category=[];
+	public $category;
 	public $addCategory;
+
 
 	public function increment()
 	{
@@ -40,22 +41,23 @@ class ProductCreate extends Component
 		'product_qty' => 'required|integer',
 		'product_price' => 'required|numeric',
 		'photo' => 'nullable|image',
-		'category' => 'required|integer'
+		'category' => 'required|integer|unique:categories,name'
 	];
 
 	protected $listeners = ['categoryUpdated' => 'updateCategories'];
 
 	public function updateCategories()
 	{
-		$this->categories = Category::orderBy('id','desc')->get();
+		$this->categories = Category::orderBy('name')->get();
 	}
 
 	public function mount()
 	{
-		$this->categories = Category::OrderBy('name')->get();
+		$this->categories = Category::orderBy('name')->get();
+	
 	}
 
-	public function  updated($propertyName)
+	public function updated($propertyName)
 	{	
 		if($this->photo){
 			try {
@@ -72,11 +74,12 @@ class ProductCreate extends Component
 
 	public function saveCategory()
 	{
-		$cat = new Category;
-		$cat->create([
+		Category::create([
 			'name' => $this->addCategory,
 			'description' => ''
 		]);
+		$cat = Category::orderBy('id', 'desc')->first();
+		$this->category = $cat->id;
 		$this->emit('categoryUpdated');
 		$this->addCategory = '';
 	}

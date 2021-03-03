@@ -163,7 +163,7 @@
                 <label for="first_name" class="block text-sm font-medium text-gray-700">Select a category</label>
                 <div class="flex items-center">
                   <select wire:model="category" name="category" id="category">
-                      
+                       
                       @foreach($categories as $cat)
                        
                           <option value="{{ $cat->id }}">{{ $cat->name }}</option>
