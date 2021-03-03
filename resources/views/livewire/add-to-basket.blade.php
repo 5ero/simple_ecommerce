@@ -1,7 +1,7 @@
 
     {{-- Add to basket --}}
 <div 
-        x-data="{ show: false, message: '' }" 
+        x-data="{ show: @entangle('show'), message: '' }" 
         
         x-on:basket.window=" show = true, message = $event.detail /*, setTimeout(() => {show = false},  5000)*/" 
         x-show="show"
@@ -23,7 +23,7 @@
                 <div x-text="message.description" class="font-normal"></div>
                 <div class="font-semibold" x-text="message.price"></div>
                 <div class="mt-2">Select Quantity:</div>
-                {{  $stock  }}
+            
                 <div class="flex items-center mb-1">
                     <input wire:model="qty" id="qty"  pattern="[0-9]*" type="text" name="qty" class="text-xs w-16 border border-gray-200 m-1">
                     <button wire:click="decrement" class="w-8 h-8 rounded bg-gray-200 m-1">-</button>
@@ -32,7 +32,7 @@
                 <hr>
         
                 <div class="mt-2">
-                    <button x-on:click="$wire.addtobasket(message.id), show=false" class="bg-gradient-to-t from-blue-800 to-blue-500 text-xs font-semibold px-2 py-1 rounded text-white">Add to basket</button>
+                    <button x-on:click="$wire.addtobasket(message.id)" class="bg-gradient-to-t from-blue-800 to-blue-500 text-xs font-semibold px-2 py-1 rounded text-white">Add to basket</button>
                     <button x-on:click="show=false" class=" text-xs font-semibold px-2 py-1 rounded bg-gray-100 ml-2 border border-gray-300">Cancel</button>
                 </div>
             </div>
