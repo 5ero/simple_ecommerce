@@ -46,7 +46,7 @@
                         @foreach($order->products as $products)
                             <tr class="text-left">
                                 <td class="py-1">
-                                    {{ $products['product'] }} @ &pound;{{ $products['product_price'] }} each
+                                    {{ $products['product'] }} @ &pound;{{ \App\Helpers\Money::format_money($products->product_price) }} each
                                 </td>
                                 <td>
                                    x {{ $products['product_qty'] }}
