@@ -7,13 +7,16 @@
             </td>
             <td valign="top" class="pt-1">
                 <table>
-                    @foreach($order->products as $product)
+                    <tr>
+                        <td>{{ $order->customer->name }}</td>
+                    </tr>
+                    {{-- @foreach($order->products as $product)
                         <tr>
                             <td valign="top">
                                 {{ $product['product'] }} x {{ $product['product_qty'] }} @ {{ $product['product_price'] }}
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach --}}
                 </table>
                
             </td>

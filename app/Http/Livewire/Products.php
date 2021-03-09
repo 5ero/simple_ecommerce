@@ -5,11 +5,15 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
+use Livewire\WithPagination;
 
 class Products extends Component
 {
-	public $products;
-   
+	use WithPagination;
+
+	public $sortDirection='asc';
+	public $field='id';
+  
 
 	public function selectProduct($productid)
 	{
@@ -24,10 +28,19 @@ class Products extends Component
 		]);
 	}
 
+	public function sort()
+	{
+		$this->field = 'product_price';
+		
+	}
+
+
     public function render()
-    {
+    {			
         return view('livewire.products', [
-        	$this->products = Product::where('active', true)->get()
-        ])->layout('layouts.base');
+			'products' => Product::orderBy($this->field, $this->sortDirection)
+										->where('active', true)
+										->paginate(10)
+		]);
     }
 }

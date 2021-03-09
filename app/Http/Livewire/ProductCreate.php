@@ -5,8 +5,8 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Http;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
-use Livewire\Component;
 use App\Models\Category;
+use Livewire\Component;
 
 
 class ProductCreate extends Component
@@ -19,11 +19,10 @@ class ProductCreate extends Component
 	public $product_price;
 	public $successMsg;
 	public $photo;
-	public $tempUrl;
 	public $categories;
 	public $category;
 	public $addCategory;
-
+	public $tempUrl;
 
 	public function increment()
 	{
@@ -57,7 +56,7 @@ class ProductCreate extends Component
 	
 	}
 
-	public function updated($propertyName)
+	public function  updated($propertyName)
 	{	
 		if($this->photo){
 			try {
@@ -71,7 +70,6 @@ class ProductCreate extends Component
 		$this->validateOnly($propertyName);
 	}
 
-
 	public function saveCategory()
 	{
 		Category::create([
@@ -84,33 +82,32 @@ class ProductCreate extends Component
 		$this->addCategory = '';
 	}
 
-
 	public function submitForm()
 	{
-		$this->validate();
+			$this->validate();
 
-		$isImage = $this->photo ? $this->photo->storeAs('images', Str::slug($this->product_name).'.'.$this->photo->extension()) : null;
+			$isImage = $this->photo ? $this->photo->storeAs('images', Str::slug($this->product_name).'.'.$this->photo->extension()) : null;
 
-		$formData = [
-			'product_name' => $this->product_name,
-			'product_description' => $this->product_description,
-			'product_qty' => $this->product_qty,
-			'product_price' => $this->product_price,
-			'photo' => $isImage,
-			'category_id' => $this->category
-		];
+			$formData = [
+				'product_name' => $this->product_name,
+				'product_description' => $this->product_description,
+				'product_qty' => $this->product_qty,
+				'product_price' => $this->product_price,
+				'photo' => $isImage,
+				'category_id' => $this->category
+			];
 
 
-		// Needs refactoring to use model directly instead of api.
-		try {
-			$response = Http::post(config('app.url') . '/api/products', $formData);
+			// Needs refactoring to use model directly instead of api.
+			try {
+				$response = Http::post(config('app.url') . '/api/products', $formData);
 
-		} catch (Exception $e){
-			$this->successMsg = 'Error: '. $e;
-		}
-		
-		$this->dispatchBrowserEvent('success', 'Product created!');			
-		$this->clearForm();
+			} catch (Exception $e){
+				$this->successMsg = 'Error: '. $e;
+			}
+			
+			$this->dispatchBrowserEvent('success', 'Product created!');			
+			$this->clearForm();
 	}
 
 	public function clearForm()

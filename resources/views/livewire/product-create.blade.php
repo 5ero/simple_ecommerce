@@ -27,6 +27,9 @@
                   Product name
                 </label>
                 <div class="mt-1 flex rounded-md shadow-sm">
+                  <!-- <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                    http://
+                  </span> -->
                   <input wire:model="product_name" type="text" name="product_name" id="product_name" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-md sm:text-sm border-gray-300 @error('product_name') border-red-500 @enderror" placeholder="Product name">
                 </div>
                 @error('product_name')
@@ -89,7 +92,6 @@
     </div>
   </div>
 </div>
-
 <div class="hidden sm:block" aria-hidden="true">
   <div class="py-0">
     <div class="border-t border-gray-200"></div>
@@ -146,14 +148,13 @@
     </div>
   </div>
 </div>
-
 <div class="hidden sm:block" aria-hidden="true">
   <div class="py-0">
     <div class="border-t border-gray-200"></div>
   </div>
 </div>
 
-<div class="mt-10 sm:mt-0 p-4 bg-white">
+<div class="mt-10 sm:mt-0 p-4 bg-gray-50">
   <div class="md:grid md:grid-cols-3 md:gap-6">
     <div class="md:col-span-1">
       <div class="px-4 sm:px-0">
@@ -163,7 +164,6 @@
         </p>
       </div>
     </div>
-  
     <div class="mt-5 md:mt-0 md:col-span-2">
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
@@ -197,6 +197,7 @@
                 @enderror
               </div>
 
+             
             </div>
           </div>
 

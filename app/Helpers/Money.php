@@ -1,30 +1,28 @@
-<?php 
+<?php
 
 namespace App\Helpers;
 
 class Money {
 
-    // Returns a value as money or DOUBLE e.g 10 will become 10.00
-    public static function format_money($value)
+    public static function money($value)
     {
         return number_format($value, 2);
     }
 
-    // Returns the VAT amount for a given value
+    //Return the amount VAT on a given value
     public static function vat($value)
     {
-        $vat = ($value / 100) * config('money.vat_rate');
-        return  Self::format_money($vat);
+        $vat = 20; //VAT rate
+        $total = ($value / 100) * $vat;
+        return number_format($total, 2, '.', '');
     }
 
-    // Returns the total amount including VAT
+
+    //Return the total order value including VAT
     public static function total($value)
     {
         $vat = Self::vat($value);
-        $total = Self::format_money($value-$vat);
-        return $total;
+        $total = $value+$vat;
+        return number_format($total, 2); 
     }
-
-    
-
 }

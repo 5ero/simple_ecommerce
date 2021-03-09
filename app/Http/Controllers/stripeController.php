@@ -30,6 +30,7 @@ class stripeController extends Controller
               ],
               ],
             'quantity' => $i->quantity,
+            'tax_rates' => ['txr_1IQEwPBuffrI1R52ChUp2nt3'],
             ];
       }   
               

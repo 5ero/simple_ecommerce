@@ -16,9 +16,24 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div id="app" class="max-w-7xl mx-auto">
-            {{ $slot }}
+        <div id="app" class="flex flex-col min-h-screen">
+                <livewire:toast-messenger />
+        
+                <livewire:navbar-top />
+            
+                <livewire:add-to-basket />
+                <div class="md:w-10/12 mx-auto flex-grow">
+                     {{ $slot }}
+                </div>
+               
+     
+                <footer class="pt-10">
+                    <div class="bg-gray-100 p-4 h-64">
+
+                    </div>
+                </footer>
         </div>
+       
     @livewireScripts
     </body>
 </html>

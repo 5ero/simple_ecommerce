@@ -19,11 +19,11 @@ class CreateTableOrders extends Migration
             $table->id();
             $table->string('order_no');
             $table->text('products');
-            $table->integer('order_value');
+            $table->double('order_value', 8, 2);
             $table->bigInteger('customer_id')->unsigned();
             $table->string('status');
-            $table->boolean('shipped')->default(0);
-            $table->dateTime('shipped_date');
+            $table->boolean('shipped')->nullable()->default(0);
+            $table->dateTime('shipped_date')->nullable();
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');

@@ -27,16 +27,18 @@ class BasketTest extends TestCase
     /** @test */
     public function can_add_item_to_basket()
     {
+        $this->withoutExceptionHandling();
+        
         $category = Category::create([
             'name' => 'Computers'
         ]);
 
         $product = Product::create([
-            'product_name' => 'Red Balloon Box',
-            'product_description' => 'This is a Red Balloon Box',
-            'product_price' => 4,
+            'product_name' => 'MacBook Pro',
+            'product_description' => 'Super fast laptop',
+            'product_price' => 2000,
             'product_qty' => 800,
-            'photo' => 'images/red-balloon-box.png',
+            'photo' => 'images/MacBookPro.png',
             'active' => 1,
             'category_id' => 1
         ]);

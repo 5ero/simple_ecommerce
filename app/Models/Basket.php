@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Basket extends Model
 {
     use HasFactory;
@@ -27,6 +28,17 @@ class Basket extends Model
     {
         return number_format($value, 2, '.', '');
     }
+
+    public function setPriceValueAttribute($value)
+	{
+		$this->attributes['price'] = number_format($value, 2, '.', '');
+	}
+
+    public function setTotalValueAttribute($value)
+	{
+		$this->attributes['total'] = number_format($value, 2, '.', '');
+	}
+
 
     public function products()
     {

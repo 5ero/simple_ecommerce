@@ -1,16 +1,37 @@
 <div>
-    <livewire:toast-messenger />
-    <livewire:navbar-top />
+
+  <div class="grid md:grid-cols-5 gap-3 max-w-7xl">
+
+    <div></div>
     
-    <div class="p-4">
-    	<h2 class="text-3xl text-blue-600">Checkout</h2>
-    </div>
-    <button id="checkout-button">Checkout</button>
+      <div class="md:col-span-4 md:border-l">
+       
+    <div class="text-3xl p-4 bg-white text-gray-600 border-r-2 border-l-2 border-white">
    
     </div>
+    <div class="mx-auto w-6/12 text-center text-4xl p-4 pt-20">
+      Processing your order
+    
+      <div class="relative pt-4">
+        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+          <div id="bar" class="transition-all ease-out duration-1000 h-full bg-pink-500 relative w-0"></div>
+        </div>
+      </div>
+      
+    </div>
+		</div>
+	</div>
 </div>
 
 
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+            let bar = document.getElementById('bar');
+            bar.classList.remove('w-0');
+            bar.classList.add('w-full');
+        });
+</script>
 
 <script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">

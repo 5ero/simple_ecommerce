@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productController;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\About;
-use App\Http\Livewire\Shop;
-use App\Http\Livewire\FAQ;
+use App\Http\Livewire\Boxes;
+use App\Http\Livewire\Box;
+use App\Http\Livewire\Faq;
 use App\Http\Livewire\Contact;
 use App\Http\Livewire\ViewBasket;
 use Illuminate\Support\Facades\Storage;
@@ -18,6 +19,7 @@ use App\Models\Basket;
 use App\Http\Controllers\ordersController;
 use App\Http\Livewire\Admin\OrderShow;
 use App\Http\Controllers\stripeController;
+use App\Http\Controllers\customerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,13 +34,15 @@ use App\Http\Controllers\stripeController;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
-Route::get('/products', Shop::class)->name('shop');
-Route::get('/faq', FAQ::class)->name('faq');
+Route::get('/products', Boxes::class)->name('products');
+Route::get('/products/{product:slug}', Box::class)->name('product');
+Route::get('/faq', Faq::class)->name('faq');
 Route::get('/contact', Contact::class)->name('contact');
 
 Route::get('/view-basket', ViewBasket::class)->name('viewbasket');
 Route::get('/delivery', Delivery::class)->name('delivery');
 Route::get('/checkout', Checkout::class)->name('checkout');
+
 
 
 Route::prefix('/admin')->middleware(['auth:sanctum', 'verified'])->group(function(){
@@ -62,6 +66,7 @@ Route::prefix('/admin')->middleware(['auth:sanctum', 'verified'])->group(functio
 	})->name('admin.orders.show');
 
 	Route::get('customers', [customerController::class, 'index'])->name('admin.customers');
+	Route::get('customers/{customer}', [customerController::class, 'show'])->name('admin.customers.show');
 });
 
 
@@ -76,5 +81,5 @@ Route::get('/payment/cancelled', OrderCancelled::class)->name('success');
 //Route::get('/customers',[customerController::class, 'index']);
 
 Route::get('/mail', function(){
-	return view('orders.emails.success');
+	return view('contact.emails.message');
 });

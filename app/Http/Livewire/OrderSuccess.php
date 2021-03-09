@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Mail;
 
 class OrderSuccess extends Component
 {
+    public $invoice;
+    public $order;
 
     public function render()
     {
@@ -26,6 +28,7 @@ class OrderSuccess extends Component
             $order->order_no = $ord->order_no+1;
         }
         
+        $this->invoice = $order->order_no;
         //Set products
         $products = array();
         $customer_id = '';
@@ -42,9 +45,6 @@ class OrderSuccess extends Component
             ];
 
             $prices[] = $item->price*$item->quantity;
-           
-           
-            $customer_id = $item->customer_id;
         }
 
         $total = array_sum($prices);
@@ -58,11 +58,19 @@ class OrderSuccess extends Component
         $order->status = 'PAID';
 
         //Get the customer
-        $order->customer_id = $customer_id;
+        $order->customer_id = $basket[0]['customer_id'];
         
         //Save order
         $order->save();
 
+        $this->order = $order;
+
+        //Update stock quantities after order
+        foreach($products as $product){
+            $p = Product::find($product['product_id']);
+            $p->product_qty = ($p->product_qty - $product['product_qty']);
+            $p->save();
+        }
         
         //Kill the basket items
         $deleteBaskets = Basket::where('session_id', session('_token'))->delete();
@@ -72,12 +80,6 @@ class OrderSuccess extends Component
         $customer = Customer::find($order->customer_id);
         Mail::to($customer->email)->send(new orderReceived($order));
 
-        //Update stock quantities after order
-        foreach($products as $product){
-            $p = Product::find($product['product_id']);
-            $p->product_qty = ($p->product_qty - $product['product_qty']);
-            $p->save();
-        }
         
         return view('livewire.order-success')
             ->layout('layouts.base');

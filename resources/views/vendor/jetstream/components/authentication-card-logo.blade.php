@@ -7,6 +7,6 @@
 <div class="text-gray-700">
 	<div class="flex items-center">
 		<i class="fas fa-box-open fa-2x"></i> 
-		<span class="ml-1 mr-4 text-3xl ">My Shop</span>
+		<span class="ml-1 mr-4 text-3xl logo">Balloon Boxes</span>
 	</div>
 </div>

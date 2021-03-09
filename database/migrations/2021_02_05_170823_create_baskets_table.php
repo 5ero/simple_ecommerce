@@ -18,10 +18,10 @@ class CreateBasketsTable extends Migration
             $table->string('session_id')->nullable();
             $table->bigInteger('product_id')->nullable()->unsigned();
             $table->integer('quantity')->default(0);
-            $table->integer('price')->default(0);
-            $table->integer('total')->default(0);
+            $table->double('price', 8, 2)->nullable();
+            $table->double('total', 8, 2)->nullable();
 
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
     }

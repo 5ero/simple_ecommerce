@@ -69,7 +69,6 @@ class Delivery extends Component
 		$customer = Customer::updateOrCreate(
 			[
 				'email' => $this->email,
-				'name' => $this->name
 			],
 			[
 			'name' => $this->name,

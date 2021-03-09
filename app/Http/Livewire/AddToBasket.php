@@ -13,7 +13,8 @@ class AddToBasket extends Component
      public $stock;
 	 public $basket;
      
-     protected $rules = [
+
+    protected $rules = [
         'qty' => 'required|integer'
     ];
 
@@ -22,6 +23,7 @@ class AddToBasket extends Component
 		$this->validateOnly($propertyName);
 	}
 
+
     public function increment()
     {
     	$this->qty++;
@@ -29,7 +31,7 @@ class AddToBasket extends Component
 
     public function decrement()
     {
-    	$this->qty--;
+        $this->qty--;
     }
 
     public function mount(Basket $basket)
@@ -41,25 +43,27 @@ class AddToBasket extends Component
     {
         $this->validate();
 
-        if(empty($this->qty)){
+        if($this->qty < 1){
             $this->show = true;
-            $this->dispatchBrowserEvent('danger', 'You need to add a quantity');
+            $this->dispatchBrowserEvent('danger', 'You have to add a quantity');
         } else {
-            $product = Product::where('id', $id)->first();
+            $product = Product::findorfail($id);
             $this->stock = $product->product_qty;
-    	
+            
     	    $this->basket->create([
                 'session_id' => session('_token'),
                 'product_id' => $id,
                 'price' => $product->product_price,
                 'total' => $product->product_price*$this->qty,
                 'quantity' => $this->qty,
-            ]);
-            $this->show = false;    
+    	    ]);
+            
+            $this->show = false;
             $this->qty = 0;
             $this->emit('updateBasket');	
             $this->dispatchBrowserEvent('success', 'Item added to basket!');
         }
+
         
     }
 

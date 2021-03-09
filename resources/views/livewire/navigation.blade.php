@@ -13,11 +13,11 @@
           <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
             <div class="flex items-center justify-between w-full md:w-auto mt-5">
               <a href="#" class="flex item-center">
-                <span class="sr-only">My Shop/span>
+                <span class="sr-only">Balloon Boxes</span>
                 <!-- <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"> -->
                 <img class="h-16" src="/img/balloon-boxes-indigo-600.png">
                 <div class="logo brand text-3xl leading-tight text-indigo-600 ml-2">
-				My Shop
+					Balloon<br>Boxes
 				</div>
               </a>
               <div class="-mr-2 flex items-center md:hidden">

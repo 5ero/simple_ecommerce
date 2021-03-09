@@ -25,7 +25,6 @@ class ProductEdit extends Component
 	public $category;
 	public $addCategory;
 
-
 	protected $rules = [
 		'product_name' => 'required',
 		'product_description' => 'required',
@@ -88,7 +87,7 @@ class ProductEdit extends Component
 		Storage::delete($this->product->photo);
 		$this->product->delete();
 		sleep(1);
-		return redirect('/admin/products');
+		return redirect('/products');
 	}
 
 	public function mount(Product $product)
@@ -100,7 +99,6 @@ class ProductEdit extends Component
 		$this->product_price = $product->product_price;
 		$this->categories = Category::all();
 		$this->category = $product->category->id;
-		
 	}
 
 	public function updatedPhoto()

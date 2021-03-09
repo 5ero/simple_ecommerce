@@ -44,6 +44,7 @@ class ProductTest extends TestCase
             'product_description' => $this->faker->paragraph,
             'product_price' => $this->faker->numberBetween($min = 1000, $max = 2000),
             'product_qty' => $this->faker->numberBetween($min = 0, $max = 800),
+            'photo' => 'images/iMac.png',
             'category_id' => 1
         ];
 

@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class FAQ extends Component
+class Faq extends Component
 {
     public function render()
     {

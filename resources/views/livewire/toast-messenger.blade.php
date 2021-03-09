@@ -1,24 +1,27 @@
 {{-- Toast Success --}}
-<div 
-        x-data="{ show: false, message: '' }" 
-        x-on:success.window=" show = true, message = $event.detail, setTimeout(() => {show = false},  2500) " 
-        x-show="show"
-        x-transition:enter="transform ease-out duration-300 transition"
-        x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
-        x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
-        x-transition:leave="transition ease-in duration-100"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-         class="fixed z-10 right-0 m-12 top-32 shadow-md text-sm  rounded-lg border border-gray-300 w-80 h-14 bg-gray-100 font-semibold flex items-center px-4 text-gray-500"
-        >
-    <i class="fas fa-check-circle text-green-500"></i>
-    <div x-text="message" class="ml-2"></div>
-    <div class="flex-1 text-right text-gray-400">
-        <button x-on:click="show=false" class="inline-flex focus:outline-none ">
-            <i class="fas fa-times"></i>
-        </button>
+
+    <div 
+    x-data="{ show: false, message: '' }" 
+    x-on:success.window=" show = true, message = $event.detail, setTimeout(() => {show = false},  2500) " 
+    x-show="show"
+    x-transition:enter="transform ease-out duration-300 transition"
+    x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+    x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
+    x-transition:leave="transition ease-in duration-100"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+     class="fixed md:left-1/4 z-10 top-0 md:top-10 shadow-md text-sm text-center border rounded-md border-green-300 w-full md:m-0 md:w-6/12 h-14 bg-green-100 font-semibold flex items-center px-4 text-gray-500"
+    >
+        <i class="fas fa-check-circle text-green-500"></i>
+        <div x-text="message" class="ml-2"></div>
+        <div class="flex-1 text-right text-gray-400">
+            <button x-on:click="show=false" class="inline-flex focus:outline-none ">
+                <i class="fas fa-times-circle text-green-500"></i>
+            </button>
+        </div>
     </div>
-</div>
+
+
 
 {{-- Toast Warning --}}
 <div 

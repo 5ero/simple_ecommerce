@@ -4,11 +4,11 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Shop extends Component
+class Boxes extends Component
 {
     public function render()
     {
-        return view('livewire.shop')
+        return view('livewire.boxes')
             ->layout('layouts.base');
     }
 }

@@ -3,11 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
+;
+
 
 class Product extends Model
 {
-	use HasFactory;
+	use HasFactory, sluggable, SluggableScopeHelpers;
+
+	public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'product_name'
+            ]
+        ];
+    }
 	
 	protected $fillable = [
 		'product_name',
@@ -15,6 +28,7 @@ class Product extends Model
 		'product_price',
 		'product_qty',
 		'photo',
+		'slug',
 		'active',
 		'category_id'
 	];

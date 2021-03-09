@@ -10,8 +10,7 @@ class customerController extends Controller
 {
 
 	public function index(){
-		$customer = Customer::all();
-		return $customer;
+		return view('customers.index');
 	}
 
     public function store(CreateCustomerRequest $request)

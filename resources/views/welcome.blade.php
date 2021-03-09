@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>My Shop</title>
+        <title>Balloon Boxes</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,14 +19,15 @@
     
     <livewire:navbar-top />
 
-    <div class="w-full h-72 bg-gray-50 border">
-    </div>
+    {{-- <div class="w-full h-72 bg-gray-50 border">
+        <img src="/img/banner.png" class="object-cover w-full h-full" alt="">
+    </div> --}}
 
     <div class="grid md:grid-cols-3 gap-3 max-w-7xl">
         <div></div>
         <div class="md:col-span-2 border-l border-gray-200">
              <livewire:add-to-basket />
-            <livewire:products />
+             <livewire:products />
         </div>
     </div>
     

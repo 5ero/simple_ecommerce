@@ -1,5 +1,5 @@
 <div>
-	<div class="p-4 text-right">
+	<div class="p-4">
         Orders
     </div>
 	<hr>
@@ -18,8 +18,8 @@
 		</div>
 		<div class="flex-1 text-right mr-4">
 			<div class="pt-6 w-full">
-				<label for="active" class="mr-2">Orders to be shipped</label>
-					<input wire:model="toBeShipped" name="toBeShipped" id="toBeShipped" type="checkbox" class="focus:outline-none">
+				<label for="active" class="mr-2">Shipped orders</label>
+					<input wire:model="shipped" name="shipped" id="shipped" type="checkbox" class="focus:outline-none">
 			</div>
 		</div>
 	</div>
@@ -46,7 +46,7 @@
                         @foreach($order->products as $products)
                             <tr class="text-left">
                                 <td class="py-1">
-                                    {{ $products['product'] }} @ &pound;{{ \App\Helpers\Money::format_money($products->product_price) }} each
+                                    {{ $products['product'] }} @ &pound;{{ $products['product_price'] }} each
                                 </td>
                                 <td>
                                    x {{ $products['product_qty'] }}
@@ -58,7 +58,7 @@
                         @endforeach
                     </table>
                 </td>
-                <td>&pound;{{ $order->order_value }}</td>
+                <td>&pound;{{ $order->order_value }} <span class="text-sm text-gray-400">Ex.Vat</span></td>
                 <td>{{ \Carbon\Carbon::parse($order->created_at)->diffForHumans() }}</td>
                     
             </tr>

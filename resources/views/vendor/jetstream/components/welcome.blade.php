@@ -14,7 +14,7 @@
         </div>
 
         <div class="ml-12">
-            <livewire:product-snapshot />
+            <livewire:admin.product-snapshot />
         </div>
     </div>
 
@@ -25,7 +25,7 @@
         </div>
 
         <div class="ml-12">
-            <livewire:order-snapshot />
+            <livewire:admin.order-snapshot />
         </div>
     </div>
 

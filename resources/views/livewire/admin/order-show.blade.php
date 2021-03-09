@@ -1,13 +1,32 @@
 <div>
    <div class="border p-3 shadow">
        <div class="py-2 flex items-center justify-between">
-           <h1 class="text-2xl">Order: #{{ $order->order_no }}</h1>
-           <div>Status: <span class="text-green-700 font-semibold">{{ $order->status }}</span></div>
+            <h1 class="text-2xl">Order: #{{ $order->order_no }}</h1>
+            <div>
+               Status: 
+                <span class="text-green-700 font-semibold">{{ $order->status }}</span>
+            </div>
+
+           <div>
+              
+                <button 
+                    @if($order->shipped == '') wire:click="shipped" @endif
+                    class="@if($order->shipped == true) bg-green-600 @else bg-blue-600 @endif text-white rounded-sm p-2 font-semibold">
+                    {!! $order->shipped == true ? '<i class="fas fa-check-circle"></i> Shipped' : 'Mark as shipped' !!}
+                </button>
+           </div>
        </div>
        <hr>
-       <div class="font-semibold text-sm text-gray-600 pt-2">
-           Order date: {{ \Carbon\Carbon::parse($order->created_at)->format('d M Y, H:i') }}
+       <div class="flex items-center font-semibold justify-between bg-gray-100 px-1">
+            <div class="font-semibold text-sm text-gray-600 pt-2">
+                Ordered on: {{ \Carbon\Carbon::parse($order->created_at)->format('d M Y, H:i') }}
+            </div>
+            
+            <div class="font-semibold text-sm text-gray-600 pt-2">
+               {{ $order->shipped_date != '' ? 'Shipped on: ' . \Carbon\Carbon::parse($order->shipped_date)->format('d M Y, H:i') : '' }}
+            </div>
        </div>
+       
        <div class="py-8">
             <h2 class="text-2xl mb-4">Items</h2>
             <table class="w-full">
@@ -38,8 +57,14 @@
                 <tr>
                     <td class="p-2"></td>
                     <td class="p-2"></td>
+                    <td class="p-2 text-right">VAT</td>
+                    <td class="p-2 ">&pound;{{ $vat }}</td>
+                </tr>
+                <tr>
+                    <td class="p-2"></td>
+                    <td class="p-2"></td>
                     <td class="p-2 text-right font-bold">Total</td>
-                    <td class="p-2 font-bold">&pound;{{ $order->order_value }}</td>
+                    <td class="p-2 font-bold">&pound;{{ $total }}</td>
                 </tr>
             </table>
        </div>
