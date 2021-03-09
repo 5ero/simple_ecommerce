@@ -1,5 +1,5 @@
-<div>
 
+<div>
 	    <div class="grid md:grid-cols-5 gap-3 max-w-7xl">
 
 			<div></div>
@@ -57,4 +57,5 @@
 
 	        </div>
 	    </div>
+    </div>
 </div>
