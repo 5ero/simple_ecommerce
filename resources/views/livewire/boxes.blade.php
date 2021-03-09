@@ -8,7 +8,7 @@
 	        <div class="md:col-span-4 md:border-l ">
 				
 				<div class="text-3xl p-4 bg-white text-gray-600 border-r border-white">
-					{{ Str::title('Balloon Delivery Boxes')}}
+					Products
 				</div>
 				
 
