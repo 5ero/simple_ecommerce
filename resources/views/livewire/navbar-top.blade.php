@@ -43,7 +43,7 @@
 					<a href="{{ route('about') }}" class="px-10 py-4 block">About</a>
 				</div>
 				<div class="bg-white border-b border-gray-200 text-blue-800">
-					<a href="{{ route('products') }}" class="px-10 py-4 block">Boxes</a>
+					<a href="{{ route('products') }}" class="px-10 py-4 block">Products</a>
 				</div>
 				<div class="bg-gray-50 border-b border-gray-200 text-blue-800">
 					<a href="{{ route('contact') }}t" class="px-10 py-4 block">Contact</a>
