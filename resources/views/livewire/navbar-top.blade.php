@@ -46,7 +46,7 @@
 					<a href="{{ route('products') }}" class="px-10 py-4 block">Products</a>
 				</div>
 				<div class="bg-gray-50 border-b border-gray-200 text-blue-800">
-					<a href="{{ route('contact') }}t" class="px-10 py-4 block">Contact</a>
+					<a href="{{ route('contact') }}" class="px-10 py-4 block">Contact</a>
 				</div>
 				<div class="bg-blue-400 text-white border-b border-gray-200">
 					<a href="{{ route('viewbasket') }}" class="px-10 py-4 block"><i class="fas fa-shopping-basket"></i>&nbsp;View basket</a>
