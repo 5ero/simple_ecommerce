@@ -10,7 +10,7 @@
 					{{ $product->product_name }}
 				</div>
 				<div class="md:flex">
-                    <div class="md:w-96 shadow m-4">
+                    <div class="md:w-96 m-4">
                         <img src="{{ Storage::url($product->photo) }}" alt="" class="object-cover">
                     </div>
                    

@@ -44936,19 +44936,6 @@ select{
           animation: bounce 1s infinite;
 }
 
-html{
-  min-height:100%;
-  background-image: url('/img/bg4.png') fixed;
-  background-repeat:no-repeat;
-  background-position:bottom left;
-  background-size: cover;
-}
-
-body {
-  line-height: 1;
-  padding-bottom:200px;
-}
-
 .logo {
   font-family: 'Bungee Shade', cursive;
 }
