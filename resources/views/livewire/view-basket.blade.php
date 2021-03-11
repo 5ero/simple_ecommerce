@@ -10,9 +10,7 @@
 			</div>
 			<div class="md:col-span-2 border-l border-gray-200 pb-5">
 				<div class=" mx-2 rounded bg-white">
-					  <div class="text-3xl text-blue-500 text-center py-3">
-						  
-					  </div>
+					 
 					<div class="grid grid-cols-7 gap-2 m-3 items-center">
 				@if($total != 0)		
 						<div class="col-span-1"></div>
@@ -42,12 +40,12 @@
 					</div>
 	
 					@if($total != 0)
-					<div class="grid grid-cols-6 gap-2 m-3">
-						<div class="col-span-5 text-right text-sm">Vat:</div>
+					<div class="grid grid-cols-7 gap-2 m-3">
+						<div class="col-span-6 text-right text-sm">Vat:</div>
 						<div class="col-span-1 text-sm text-center">&pound;{{ $vat }}</div>
 					</div>
-						<div class="grid grid-cols-6 gap-2 m-3">
-							<div class="col-span-5 text-right text-sm">Total:</div>
+						<div class="grid grid-cols-7 gap-2 m-3">
+							<div class="col-span-6 text-right text-sm">Total:</div>
 							<div class="col-span-1 text-sm text-center">&pound;{{ $total }}</div>
 						</div>
 	
@@ -56,7 +54,7 @@
 						</div>
 					@endif
 			</div>
-		
+			
 		</div>
 	</div>
 </div>
